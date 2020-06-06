@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_popular">
+
+    <fragment
+        android:id="@+id/nav_popular"
+        android:name="com.tmdbapp.mylearning.ui.popular.PopularMoviesFragment"
+        android:label="@string/popular_movies"
+        tools:layout="@layout/fragment_show_movies" />
+
+    <fragment
+        android:id="@+id/nav_now_playing"
+        android:name="com.tmdbapp.mylearning.ui.now_playing.NowPlayingMoviesFragment"
+        android:label="@string/now_playing_movies"
+        tools:layout="@layout/fragment_show_movies" />
+
+    <fragment
+        android:id="@+id/nav_upcoming"
+        android:name="com.tmdbapp.mylearning.ui.upcoming.UpcomingMoviesFragment"
+        android:label="@string/upcoming_movies"
+        tools:layout="@layout/fragment_show_movies" />
+
+    <fragment
+        android:id="@+id/nav_top_rated"
+        android:name="com.tmdbapp.mylearning.ui.top_rated.TopRatedMoviesFragment"
+        android:label="@string/top_rated_movies"
+        tools:layout="@layout/fragment_show_movies" />
+</navigation>

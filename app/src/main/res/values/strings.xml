@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TMDB Explore</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">TMDB Explore</string>
+    <string name="nav_header_subtitle">manishjain8it@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="popular_movies">Popular Movies</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="now_playing_movies">Now Playing Movies</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+</resources>
