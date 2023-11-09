@@ -9,26 +9,27 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.tmdbapp.mylearning.R
 import com.tmdbapp.mylearning.adapter.MoviesListAdapter
+import com.tmdbapp.mylearning.databinding.FragmentShowMoviesBinding
 import com.tmdbapp.mylearning.extensions.toMovieView
 import com.tmdbapp.mylearning.mapper.MovieView
 import com.tmdbapp.mylearning.model.MoviesListResponse
 import com.tmdbapp.mylearning.utils.Constants
 import com.tmdbapp.mylearning.utils.Resource
-import kotlinx.android.synthetic.main.fragment_show_movies.*
 
 class NowPlayingMoviesFragment : Fragment() {
 
     private val nowPlayingMoviesViewModel: NowPlayingMoviesViewModel by viewModels()
+    private lateinit var binding: FragmentShowMoviesBinding
     private lateinit var moviesListAdapter: MoviesListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_show_movies, container, false)
+    ): View {
+        binding = FragmentShowMoviesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,17 +41,17 @@ class NowPlayingMoviesFragment : Fragment() {
             Observer { resource: Resource<MoviesListResponse> ->
                 when (resource) {
                     is Resource.Loading -> {
-                        pbView.visibility = View.VISIBLE
-                        rvMoviesList.visibility = View.GONE
+                        binding.pbView.visibility = View.VISIBLE
+                        binding.rvMoviesList.visibility = View.GONE
                     }
                     is Resource.Success -> {
-                        pbView.visibility = View.GONE
-                        rvMoviesList.visibility = View.VISIBLE
+                        binding.pbView.visibility = View.GONE
+                        binding.rvMoviesList.visibility = View.VISIBLE
                         setDataWithUI(resource.data)
                     }
                     is Resource.Failure -> {
-                        pbView.visibility = View.GONE
-                        rvMoviesList.visibility = View.GONE
+                        binding.pbView.visibility = View.GONE
+                        binding.rvMoviesList.visibility = View.GONE
                         Toast.makeText(context, resource.error, Toast.LENGTH_LONG).show()
                     }
                 }
@@ -59,7 +60,7 @@ class NowPlayingMoviesFragment : Fragment() {
 
     private fun initializeRecyclerView() {
         setupAdapter()
-        rvMoviesList.apply {
+        binding.rvMoviesList.apply {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 2)
             adapter = moviesListAdapter
